@@ -1,0 +1,17 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://bqpanp3ulbul2"
+
+[deps]
+
+files=["res://assets/lpc_child_item_animations_2026-03-28T22-23-12/credits/credits.notes.translation", "res://assets/lpc_child_item_animations_2026-03-28T22-23-12/credits/credits.authors.translation", "res://assets/lpc_child_item_animations_2026-03-28T22-23-12/credits/credits.licenses.translation", "res://assets/lpc_child_item_animations_2026-03-28T22-23-12/credits/credits.urls.translation"]
+
+source_file="res://assets/lpc_child_item_animations_2026-03-28T22-23-12/credits/credits.csv"
+dest_files=["res://assets/lpc_child_item_animations_2026-03-28T22-23-12/credits/credits.notes.translation", "res://assets/lpc_child_item_animations_2026-03-28T22-23-12/credits/credits.authors.translation", "res://assets/lpc_child_item_animations_2026-03-28T22-23-12/credits/credits.licenses.translation", "res://assets/lpc_child_item_animations_2026-03-28T22-23-12/credits/credits.urls.translation"]
+
+[params]
+
+compress=true
+delimiter=0

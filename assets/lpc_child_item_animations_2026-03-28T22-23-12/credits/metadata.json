@@ -1,0 +1,76 @@
+{
+  "exportTimestamp": "2026-03-28T22-23-12",
+  "bodyType": "child",
+  "standardAnimations": {
+    "exported": {
+      "spellcast": [
+        "010 body_color__light_.png"
+      ],
+      "thrust": [
+        "010 body_color__light_.png"
+      ],
+      "walk": [
+        "010 body_color__light_.png"
+      ],
+      "slash": [
+        "010 body_color__light_.png"
+      ],
+      "shoot": [
+        "010 body_color__light_.png"
+      ],
+      "hurt": [
+        "010 body_color__light_.png"
+      ],
+      "climb": [
+        "010 body_color__light_.png"
+      ],
+      "idle": [
+        "010 body_color__light_.png"
+      ],
+      "jump": [
+        "010 body_color__light_.png"
+      ],
+      "sit": [
+        "010 body_color__light_.png"
+      ],
+      "emote": [
+        "010 body_color__light_.png"
+      ],
+      "run": [
+        "010 body_color__light_.png"
+      ],
+      "combat": [
+        "010 body_color__light_.png"
+      ],
+      "1h_backslash": [
+        "010 body_color__light_.png"
+      ],
+      "1h_halfslash": [
+        "010 body_color__light_.png"
+      ]
+    },
+    "failed": {
+      "spellcast": [],
+      "thrust": [],
+      "walk": [],
+      "slash": [],
+      "shoot": [],
+      "hurt": [],
+      "climb": [],
+      "idle": [],
+      "jump": [],
+      "sit": [],
+      "emote": [],
+      "run": [],
+      "combat": [],
+      "1h_backslash": [],
+      "1h_halfslash": []
+    }
+  },
+  "customAnimations": {
+    "exported": {},
+    "failed": {}
+  },
+  "frameSize": 64,
+  "frameCounts": {}
+}
