@@ -22,6 +22,10 @@ func _ready() -> void:
 	interaction_label.visible = false
 
 func _physics_process(delta: float) -> void:
+	if DialogueManager.is_open() or EventManager.is_open():
+		velocity = Vector2.ZERO
+		move_and_slide()
+		return
 	wander_timer -= delta
 	if wander_timer <= 0:
 		choose_new_direction()
@@ -53,8 +57,19 @@ func get_dialogue() -> Array[String]:
 func start_dialogue() -> void:
 	if not player_nearby:
 		return
+	face_player()
 	var lines = get_dialogue()
 	DialogueManager.start(npc_name, lines)
+func face_player() -> void:
+	if player_ref == null:
+		return
+	var dir = (player_ref.global_position - global_position).normalized()
+	if abs(dir.x) > abs(dir.y):
+		sprite.play("walk_right" if dir.x > 0 else "walk_left")
+	else:
+		sprite.play("walk_bottom" if dir.y > 0 else "walk_top")
+	sprite.frame = 0
+	sprite.pause()
 
 func choose_new_direction() -> void:
 	var directions = [Vector2.LEFT, Vector2.RIGHT, Vector2.UP, Vector2.DOWN, Vector2.ZERO]

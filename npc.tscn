@@ -45,7 +45,7 @@ animations = [{
 "texture": ExtResource("1_qland")
 }],
 "loop": true,
-"name": &"idle_bottom",
+"name": &"idle_down",
 "speed": 5.0
 }, {
 "frames": [{
@@ -186,7 +186,7 @@ script = ExtResource("1_3ca2q")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(2.09375, 2.0312498)
 sprite_frames = SubResource("SpriteFrames_faxwa")
-animation = &"idle_bottom"
+animation = &"idle_down"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 12)

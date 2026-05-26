@@ -18,6 +18,8 @@ config/icon="res://icon.svg"
 [autoload]
 
 DialogueManager="*res://DialogueManager.gd"
+PeaceManager="*res://PeaceManager.gd"
+EventManager="*res://event_manager.gd"
 
 [input]
 

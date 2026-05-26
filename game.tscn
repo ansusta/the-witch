@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://duui16fo8e6f4"]
+[gd_scene load_steps=5 format=3 uid="uid://duui16fo8e6f4"]
 
 [ext_resource type="PackedScene" uid="uid://pgunxw332rmb" path="res://npc.tscn" id="1_80nbo"]
 [ext_resource type="PackedScene" uid="uid://52sdjw7gphs5" path="res://character_body_2d.tscn" id="2_e2o6t"]
+[ext_resource type="PackedScene" uid="uid://c1g02u5nbblpy" path="res://fairy.tscn" id="3_feb5d"]
+[ext_resource type="PackedScene" uid="uid://cky3oee38sds3" path="res://area_2d.tscn" id="4_fc0e3"]
 
 [node name="game" type="Node2D"]
 
@@ -11,3 +13,13 @@ npc_name = "isabella"
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("2_e2o6t")]
 position = Vector2(436, 554)
+
+[node name="npc2" parent="." instance=ExtResource("3_feb5d")]
+position = Vector2(645, 494)
+npc_name = "charles"
+dialogue_high = Array[String](["if it isn't my dear friend", "good to see you!"])
+dialogue_neutral = Array[String](["well hello there traveller from afar"])
+
+[node name="Area2D" parent="." instance=ExtResource("4_fc0e3")]
+position = Vector2(541, 423)
+collision_mask = 3
