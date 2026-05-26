@@ -306,12 +306,11 @@ collision_layer = 2
 script = ExtResource("1_ghijl")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(322.99997, 333)
 scale = Vector2(1.7563925, 1.6249996)
 sprite_frames = SubResource("SpriteFrames_qnedo")
 animation = &"idle"
 frame_progress = 0.3793633
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(315, 334)
+position = Vector2(-7, 2)
 shape = SubResource("CircleShape2D_ghijl")

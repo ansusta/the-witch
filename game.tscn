@@ -8,7 +8,6 @@
 [node name="npc" parent="." instance=ExtResource("1_80nbo")]
 position = Vector2(538, 314)
 npc_name = "isabella"
-dialogue = Array[String](["hii"])
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("2_e2o6t")]
-position = Vector2(-172, 159)
+position = Vector2(436, 554)

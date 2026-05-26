@@ -43,6 +43,14 @@ animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("1_qland")
+}],
+"loop": true,
+"name": &"idle_bottom",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_qland")
 }, {
 "duration": 1.0,
 "texture": ExtResource("2_3ca2q")
@@ -176,11 +184,17 @@ radius = 53.009434
 script = ExtResource("1_3ca2q")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(34, -33)
 scale = Vector2(2.09375, 2.0312498)
 sprite_frames = SubResource("SpriteFrames_faxwa")
-animation = &"walk_bottom"
+animation = &"idle_bottom"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(33, -21)
+position = Vector2(0, 12)
 shape = SubResource("CircleShape2D_3ca2q")
+
+[node name="InteractionLabel" type="Label" parent="."]
+offset_left = -30.0
+offset_top = -69.0
+offset_right = 26.0
+offset_bottom = -46.0
+text = "[E] Talk"
