@@ -1,0 +1,17 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://cx0ynqtvs3dmw"
+
+[deps]
+
+files=["res://assets/npc/lpc_male_individual_frames_2026-05-26T14-43-11/credits/credits.notes.translation", "res://assets/npc/lpc_male_individual_frames_2026-05-26T14-43-11/credits/credits.authors.translation", "res://assets/npc/lpc_male_individual_frames_2026-05-26T14-43-11/credits/credits.licenses.translation", "res://assets/npc/lpc_male_individual_frames_2026-05-26T14-43-11/credits/credits.urls.translation"]
+
+source_file="res://assets/npc/lpc_male_individual_frames_2026-05-26T14-43-11/credits/credits.csv"
+dest_files=["res://assets/npc/lpc_male_individual_frames_2026-05-26T14-43-11/credits/credits.notes.translation", "res://assets/npc/lpc_male_individual_frames_2026-05-26T14-43-11/credits/credits.authors.translation", "res://assets/npc/lpc_male_individual_frames_2026-05-26T14-43-11/credits/credits.licenses.translation", "res://assets/npc/lpc_male_individual_frames_2026-05-26T14-43-11/credits/credits.urls.translation"]
+
+[params]
+
+compress=true
+delimiter=0

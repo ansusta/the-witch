@@ -1,3 +1,14 @@
-[gd_scene format=3 uid="uid://duui16fo8e6f4"]
+[gd_scene load_steps=3 format=3 uid="uid://duui16fo8e6f4"]
+
+[ext_resource type="PackedScene" uid="uid://pgunxw332rmb" path="res://npc.tscn" id="1_80nbo"]
+[ext_resource type="PackedScene" uid="uid://52sdjw7gphs5" path="res://character_body_2d.tscn" id="2_e2o6t"]
 
 [node name="game" type="Node2D"]
+
+[node name="npc" parent="." instance=ExtResource("1_80nbo")]
+position = Vector2(538, 314)
+npc_name = "isabella"
+dialogue = Array[String](["hii"])
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("2_e2o6t")]
+position = Vector2(-172, 159)
