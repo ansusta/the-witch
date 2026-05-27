@@ -1,12 +1,19 @@
-[gd_scene load_steps=40 format=3 uid="uid://c1g02u5nbblpy"]
+[gd_scene load_steps=47 format=3 uid="uid://c1g02u5nbblpy"]
 
 [ext_resource type="Script" uid="uid://c3bcer1ba3ork" path="res://npc.gd" id="1_qd8lq"]
 [ext_resource type="Texture2D" uid="uid://cqdsbjom6dusa" path="res://assets/npc/lpc_male_individual_frames_2026-05-26T14-43-11/standard/walk/down/1.png" id="2_1fy6e"]
+[ext_resource type="Texture2D" uid="uid://f5r5iafa6jtm" path="res://assets/npc/lpc_male_individual_frames_2026-05-26T14-43-11/standard/shoot/right/1.png" id="2_7d0t2"]
 [ext_resource type="Texture2D" uid="uid://d26l1pprwxnp3" path="res://assets/npc/lpc_male_individual_frames_2026-05-26T14-43-11/standard/walk/down/2.png" id="3_66pec"]
+[ext_resource type="Texture2D" uid="uid://sk7ba2wipfnm" path="res://assets/npc/lpc_male_individual_frames_2026-05-26T14-43-11/standard/shoot/right/2.png" id="3_wfslv"]
+[ext_resource type="Texture2D" uid="uid://dlua2emch40hw" path="res://assets/npc/lpc_male_individual_frames_2026-05-26T14-43-11/standard/shoot/right/3.png" id="4_37t8v"]
 [ext_resource type="Texture2D" uid="uid://ceb8mcclh04uj" path="res://assets/npc/lpc_male_individual_frames_2026-05-26T14-43-11/standard/walk/down/3.png" id="4_ffe7s"]
+[ext_resource type="Texture2D" uid="uid://kpt7wv3vb17d" path="res://assets/npc/lpc_male_individual_frames_2026-05-26T14-43-11/standard/shoot/right/4.png" id="5_tmgsl"]
 [ext_resource type="Texture2D" uid="uid://b7ktl3uiq23mf" path="res://assets/npc/lpc_male_individual_frames_2026-05-26T14-43-11/standard/walk/down/4.png" id="5_yxy06"]
 [ext_resource type="Texture2D" uid="uid://cnjf1x86qiel" path="res://assets/npc/lpc_male_individual_frames_2026-05-26T14-43-11/standard/walk/down/5.png" id="6_bq5ws"]
+[ext_resource type="Texture2D" uid="uid://iryhhopy7p0w" path="res://assets/npc/lpc_male_individual_frames_2026-05-26T14-43-11/standard/shoot/right/8.png" id="6_wfdkb"]
+[ext_resource type="Texture2D" uid="uid://bimagb7ae3um3" path="res://assets/npc/lpc_male_individual_frames_2026-05-26T14-43-11/standard/shoot/right/11.png" id="7_2ewuh"]
 [ext_resource type="Texture2D" uid="uid://fiub12mc6vn6" path="res://assets/npc/lpc_male_individual_frames_2026-05-26T14-43-11/standard/walk/down/6.png" id="7_ewiey"]
+[ext_resource type="Texture2D" uid="uid://c5whmot6m8xrd" path="res://assets/npc/lpc_male_individual_frames_2026-05-26T14-43-11/standard/shoot/right/13.png" id="8_jksbf"]
 [ext_resource type="Texture2D" uid="uid://5xe63xsc50hc" path="res://assets/npc/lpc_male_individual_frames_2026-05-26T14-43-11/standard/walk/down/7.png" id="8_po7d3"]
 [ext_resource type="Texture2D" uid="uid://dveiwqalwyxpo" path="res://assets/npc/lpc_male_individual_frames_2026-05-26T14-43-11/standard/walk/down/8.png" id="9_7d0t2"]
 [ext_resource type="Texture2D" uid="uid://ce0dco3x0i4sq" path="res://assets/npc/lpc_male_individual_frames_2026-05-26T14-43-11/standard/walk/down/9.png" id="10_wfslv"]
@@ -42,10 +49,36 @@
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("2_7d0t2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_wfslv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_37t8v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_tmgsl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_wfdkb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_2ewuh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_jksbf")
+}],
+"loop": true,
+"name": &"fight",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("2_1fy6e")
 }],
 "loop": true,
-"name": &"idle_bottom",
+"name": &"idle_down",
 "speed": 5.0
 }, {
 "frames": [{
@@ -186,7 +219,9 @@ script = ExtResource("1_qd8lq")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(1.7187501, 1.6718749)
 sprite_frames = SubResource("SpriteFrames_faxwa")
-animation = &"idle_bottom"
+animation = &"fight"
+frame = 6
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-2, 9)

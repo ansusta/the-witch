@@ -1,38 +1,106 @@
 extends CharacterBody2D
-
 @export var npc_name: String = "NPC"
 @export var town_id: String = "town_01"
 @export var dialogue_high: Array[String] = ["Good to see you, traveler!"]
 @export var dialogue_neutral: Array[String] = ["Hello."]
 @export var dialogue_hostile: Array[String] = ["..."]
-
 @export var speed: float = 50.0
 @export var interaction_radius: float = 150.0
-
 @onready var sprite = $AnimatedSprite2D
 @onready var interaction_label = $InteractionLabel
-
+var _walk_target: Vector2 = Vector2.ZERO
+var _walking_to: bool = false
+var _frozen: bool = false
+var _emoting: bool = false
 var movement_direction: Vector2 = Vector2.ZERO
 var wander_timer: float = 0.0
 var player_nearby: bool = false
 var player_ref: Node = null
+
+signal walk_finished
+
+func freeze() -> void:
+	_frozen = true
+	velocity = Vector2.ZERO
+	movement_direction = Vector2.ZERO
+	sprite.play("idle_down")
+	sprite.pause()
+
+func unfreeze() -> void:
+	_frozen = false
+
+func walk_to(target: Vector2) -> void:
+	_walk_target = target
+	_walking_to = true
+
+# Plays animation once
+func play_emote(anim_name: String) -> void:
+	if not sprite.sprite_frames.has_animation(anim_name):
+		return
+	_emoting = true
+	sprite.play(anim_name)
+	var frame_count = sprite.sprite_frames.get_frame_count(anim_name)
+	var fps = sprite.sprite_frames.get_animation_speed(anim_name)
+	var duration = frame_count / fps
+	await get_tree().create_timer(duration).timeout
+	_emoting = false
+
+# Plays animation looping until stop_emote() is called
+func play_emote_loop(anim_name: String) -> void:
+	if not sprite.sprite_frames.has_animation(anim_name):
+		return
+	_emoting = true
+	sprite.set_animation(anim_name)
+	sprite.set_frame(0)
+	sprite.play(anim_name)
+
+func stop_emote() -> void:
+	_emoting = false
+	sprite.play("idle_down")
 
 func _ready() -> void:
 	add_to_group("npcs")
 	interaction_label.visible = false
 
 func _physics_process(delta: float) -> void:
+	# Hard frozen (onlookers etc) — do nothing
+	if _frozen:
+		velocity = Vector2.ZERO
+		move_and_slide()
+		return
+
+	# Scripted walk completes uninterrupted
+	if _walking_to:
+		var dir = (_walk_target - global_position).normalized()
+		var dist = global_position.distance_to(_walk_target)
+		if dist < 5.0:
+			_walking_to = false
+			velocity = Vector2.ZERO
+			emit_signal("walk_finished")
+		else:
+			velocity = dir * speed
+			play_animation(dir)
+		move_and_slide()
+		return
+
+	# Playing an emote — stay still but don't interrupt the animation
+	if _emoting:
+		velocity = Vector2.ZERO
+		move_and_slide()
+		return
+
+	# Event/dialogue is open — freeze in place
 	if DialogueManager.is_open() or EventManager.is_open():
 		velocity = Vector2.ZERO
 		move_and_slide()
 		return
+
+	# Normal wander behaviour
 	wander_timer -= delta
 	if wander_timer <= 0:
 		choose_new_direction()
-
 	velocity = movement_direction * speed
 	move_and_slide()
-
 	if velocity != Vector2.ZERO:
 		play_animation(movement_direction)
 	else:
@@ -50,8 +118,6 @@ func _physics_process(delta: float) -> void:
 		interaction_label.visible = false
 
 func get_dialogue() -> Array[String]:
-	# PeaceManager doesn't exist yet — we'll wire this up in step 2 of the next phase
-	# For now always return neutral
 	return dialogue_neutral
 
 func start_dialogue() -> void:
@@ -60,6 +126,7 @@ func start_dialogue() -> void:
 	face_player()
 	var lines = get_dialogue()
 	DialogueManager.start(npc_name, lines)
+
 func face_player() -> void:
 	if player_ref == null:
 		return

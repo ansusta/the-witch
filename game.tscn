@@ -1,25 +1,37 @@
-[gd_scene load_steps=5 format=3 uid="uid://duui16fo8e6f4"]
+[gd_scene load_steps=8 format=3 uid="uid://duui16fo8e6f4"]
 
 [ext_resource type="PackedScene" uid="uid://pgunxw332rmb" path="res://npc.tscn" id="1_80nbo"]
 [ext_resource type="PackedScene" uid="uid://52sdjw7gphs5" path="res://character_body_2d.tscn" id="2_e2o6t"]
 [ext_resource type="PackedScene" uid="uid://c1g02u5nbblpy" path="res://fairy.tscn" id="3_feb5d"]
 [ext_resource type="PackedScene" uid="uid://cky3oee38sds3" path="res://area_2d.tscn" id="4_fc0e3"]
+[ext_resource type="PackedScene" uid="uid://bysbqcsepdc5o" path="res://wolf.tscn" id="5_7jktm"]
+[ext_resource type="PackedScene" uid="uid://byendtby3glm4" path="res://human.tscn" id="6_ryrav"]
+[ext_resource type="PackedScene" uid="uid://c1ledhw0q6rke" path="res://orc.tscn" id="7_eow3j"]
 
 [node name="game" type="Node2D"]
 
 [node name="npc" parent="." instance=ExtResource("1_80nbo")]
-position = Vector2(538, 314)
+position = Vector2(83, 232)
 npc_name = "isabella"
 
-[node name="CharacterBody2D" parent="." instance=ExtResource("2_e2o6t")]
-position = Vector2(436, 554)
+[node name="Area2D" parent="." node_paths=PackedStringArray("villager_a", "villager_b", "onlookers") instance=ExtResource("4_fc0e3")]
+position = Vector2(440, 274)
+collision_mask = 3
+villager_a = NodePath("../npc2")
+villager_b = NodePath("../npc3")
+onlookers = [NodePath("../npc4"), NodePath("../npc"), NodePath("../npc5")]
 
 [node name="npc2" parent="." instance=ExtResource("3_feb5d")]
-position = Vector2(645, 494)
-npc_name = "charles"
-dialogue_high = Array[String](["if it isn't my dear friend", "good to see you!"])
-dialogue_neutral = Array[String](["well hello there traveller from afar"])
+position = Vector2(237, 168)
 
-[node name="Area2D" parent="." instance=ExtResource("4_fc0e3")]
-position = Vector2(541, 423)
-collision_mask = 3
+[node name="npc3" parent="." instance=ExtResource("5_7jktm")]
+position = Vector2(553, 175)
+
+[node name="npc4" parent="." instance=ExtResource("6_ryrav")]
+position = Vector2(679, 281)
+
+[node name="npc5" parent="." instance=ExtResource("7_eow3j")]
+position = Vector2(374, 95)
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("2_e2o6t")]
+position = Vector2(753, 461)

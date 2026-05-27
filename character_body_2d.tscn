@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://52sdjw7gphs5"]
+[gd_scene load_steps=43 format=3 uid="uid://52sdjw7gphs5"]
 
 [ext_resource type="Texture2D" uid="uid://bi8c52xiuwxxl" path="res://assets/walk.png" id="1_f50pn"]
 [ext_resource type="Script" uid="uid://f6ovu5gjgvge" path="res://character_body_2d.gd" id="1_ghijl"]
@@ -7,10 +7,6 @@
 [sub_resource type="AtlasTexture" id="AtlasTexture_8icv6"]
 atlas = ExtResource("2_44cfe")
 region = Rect2(0, 128, 66, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_mwn6v"]
-atlas = ExtResource("2_44cfe")
-region = Rect2(66, 128, 66, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ghijl"]
 atlas = ExtResource("1_f50pn")
@@ -161,9 +157,6 @@ animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_8icv6")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_mwn6v")
 }],
 "loop": true,
 "name": &"idle",

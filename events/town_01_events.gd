@@ -1,54 +1,5 @@
 class_name Town01Events
 
-# Step map (for reference when editing):
-#  0  narration  - intro
-#  1  choice     - approach / leave
-#
-#  APPROACH PATH:
-#  2  narration  - step forward
-#  3  villager_a
-#  4  villager_b
-#  5  villager_a
-#  6  villager_b
-#  7  narration  - cough
-#  8  choice     - mediate(9) / side_a(16) / side_b(23) / probe(30)
-#
-#  MEDIATE (9-15):
-#  9  narration
-#  10 you
-#  11 narration
-#  12 villager_a
-#  13 villager_b
-#  14 narration  - on the floor
-#  15 peace_effect -8, go_to 33
-#
-#  SIDE_A (16-22):
-#  16 narration
-#  17 you
-#  18 villager_b
-#  19 villager_a
-#  20 villager_a
-#  21 narration
-#  22 peace_effect +4, go_to 33
-#
-#  SIDE_B (23-29):
-#  23 narration
-#  24 you
-#  25 villager_a
-#  26 villager_b
-#  27 villager_b
-#  28 narration
-#  29 peace_effect +4, go_to 33
-#
-#  PROBE (30-31):
-#  30 narration
-#  31 peace_effect 0, go_to 33
-#
-#  LEAVE (32):
-#  32 narration  - walk past
-#
-#  CLOSE (33):
-#  33 close
 
 static func entrance_fight() -> Dictionary:
 	return {
@@ -57,7 +8,7 @@ static func entrance_fight() -> Dictionary:
 			# 0
 			{
 				"type": "narration",
-				"text": "Ahead of you, you see two villagers engaged in a heated argument. The people nearby look away."
+				"text": "Two villagers stand near the entrance, deep in a heated argument. People nearby have gone quiet and are pretending not to notice."
 			},
 			# 1
 			{
@@ -65,9 +16,11 @@ static func entrance_fight() -> Dictionary:
 				"text": "What do you do?",
 				"options": [
 					{ "label": "Approach",        "go_to": 2  },
-					{ "label": "Leave them alone", "go_to": 32 }
+					{ "label": "Leave them alone", "go_to": 38 }
 				]
 			},
+
+			# --- APPROACH ---
 			# 2
 			{
 				"type": "narration",
@@ -76,17 +29,17 @@ static func entrance_fight() -> Dictionary:
 			# 3
 			{
 				"type": "villager_a",
-				"text": "I say they're missing. It means they're missing. I'm not going crazy!"
+				"text": "I say they're missing, it means they're missing. I'm not going crazy!"
 			},
 			# 4
 			{
 				"type": "villager_b",
-				"text": "Well I'm starting to think you really are! You handed me 5 sheep, I gave you 5 sheep back. Are you saying I can't count right?"
+				"text": "Well, I'm starting to think you really are! You handed me 5 sheep, I gave you 5 sheep back. Are you saying I can't count right?"
 			},
 			# 5
 			{
 				"type": "villager_a",
-				"text": "Oh you certainly can. Maybe you don't WANT to count right."
+				"text": "Oh, you certainly can — maybe you just don't WANT to count right."
 			},
 			# 6
 			{
@@ -96,140 +49,172 @@ static func entrance_fight() -> Dictionary:
 			# 7
 			{
 				"type": "narration",
-				"text": "You make a small coughing sound. They both turn their enraged eyes to you."
+				"text": "You clear your throat. Both of them stop mid-sentence and turn their enraged eyes toward you."
 			},
 			# 8
 			{
-				"type": "choice",
-				"text": "How do you intervene?",
-				"options": [
-					{ "label": "Try to mediate",    "go_to": 9  },
-					{ "label": "Side with villager A", "go_to": 16 },
-					{ "label": "Side with villager B", "go_to": 23 },
-					{ "label": "Probe for more info",  "go_to": 30 }
-				]
+				"type": "you",
+				"text": "Before this goes any further — how many sheep did you count before you handed them over?"
 			},
-
-			# --- MEDIATE branch (9-15) ---
 			# 9
 			{
-				"type": "narration",
-				"text": "You speak carefully, trying not to make things worse."
+				"type": "villager_a",
+				"text": "Six. I counted them at the barn, right before I left. I always count twice. Six sheep."
 			},
 			# 10
 			{
 				"type": "you",
-				"text": "Let's all calm down. I'm sure it's all a misunderstanding."
+				"text": "And you — how many did you receive?"
 			},
 			# 11
 			{
-				"type": "narration",
-				"text": "It doesn't seem to have the desired effect. They both get angrier."
+				"type": "villager_b",
+				"text": "Five. I counted them as they came through my gate, one by one. There were five. I am certain of it."
 			},
 			# 12
 			{
-				"type": "villager_a",
-				"text": "Who the hell are you? Do you think this is some game? Stay out of it!"
+				"type": "narration",
+				"text": "One sheep is missing somewhere between the barn and the gate. Both of them are certain of their count. Somebody is wrong — or lying."
 			},
 			# 13
 			{
-				"type": "villager_b",
-				"text": "Are you mocking me? Do you want to see what happens to those who mock me?"
+				"type": "choice",
+				"text": "How do you handle it?",
+				"options": [
+					{ "label": "Try to mediate",      "go_to": 14 },
+					{ "label": "Side with villager A", "go_to": 20 },
+					{ "label": "Side with villager B", "go_to": 26 },
+					{ "label": "Offer to investigate", "go_to": 32 }
+				]
 			},
+
+			# --- MEDIATE (14-19) ---
 			# 14
 			{
-				"type": "narration",
-				"text": "Next thing you know you are on the floor and your body hurts everywhere. You hear a few onlookers whispering, yet no one seems willing to help."
+				"type": "you",
+				"text": "Let's all calm down. I'm sure there's a reasonable explanation."
 			},
 			# 15
-			{ "type": "peace_effect", "delta": -8, "town_id": "town_01", "go_to": 33 },
-
-			# --- SIDE A branch (16-22) ---
-			# 16
 			{
 				"type": "narration",
-				"text": "You step up, raising your hand to shield the first villager."
+				"text": "It doesn't have the desired effect. If anything, they both get angrier."
+			},
+			# 16
+			{
+				"type": "villager_a",
+				"text": "Who in the world are you? Do you think this is a game? Stay out of it!"
 			},
 			# 17
 			{
-				"type": "you",
-				"text": "The ploy this woman is playing is quite clear. I shall not stand by and watch it happen."
+				"type": "villager_b",
+				"text": "Are you mocking me? Do you want to find out what happens to people who mock me?"
 			},
 			# 18
 			{
-				"type": "villager_b",
-				"text": "Wha— WHO ARE—"
+				"type": "narration",
+				"text": "Next thing you know you are on the ground and your body hurts everywhere. A few onlookers are whispering. No one seems willing to help."
 			},
 			# 19
-			{
-				"type": "villager_a",
-				"text": "That matters not. Whoever they are, it seems they can see the truth."
-			},
+			{ "type": "peace_effect", "delta": -8, "town_id": "town_01", "go_to": 40 },
+
+			# --- SIDE A (20-25) ---
 			# 20
 			{
-				"type": "villager_a",
-				"text": "Now will you pay me back for the sheep before things turn ugly?"
+				"type": "narration",
+				"text": "You step up and raise your hand to shield the first villager."
 			},
 			# 21
 			{
-				"type": "narration",
-				"text": "The second villager seems to have more to say — but cornered by both of you and the first villager's menacing gaze, she has no choice but to back down."
+				"type": "you",
+				"text": "The deception this woman is playing is quite clear. I will not stand by and watch it."
 			},
 			# 22
-			{ "type": "peace_effect", "delta": 4, "town_id": "town_01", "go_to": 33 },
-
-			# --- SIDE B branch (23-29) ---
+			{
+				"type": "villager_b",
+				"text": "Wha — WHO ARE —"
+			},
 			# 23
 			{
-				"type": "narration",
-				"text": "You step up, raising your hand to shield the second villager."
+				"type": "villager_a",
+				"text": "That matters not. Whoever you are, it seems you can see the truth. Now — will you pay me back for the sheep before things turn ugly?"
 			},
 			# 24
 			{
-				"type": "you",
-				"text": "This woman is no thief. You are!"
+				"type": "narration",
+				"text": "The shepherd girl seems to have more to say, but cornered by the two of you and the first villager's menacing gaze, she has little choice but to back down."
 			},
 			# 25
-			{
-				"type": "villager_a",
-				"text": "What are you doing!"
-			},
+			{ "type": "peace_effect", "delta": 4, "town_id": "town_01", "go_to": 40 },
+
+			# --- SIDE B (26-31) ---
 			# 26
 			{
-				"type": "villager_b",
-				"text": "Well now it seems the truth is coming to light."
+				"type": "narration",
+				"text": "You step up and raise your hand to shield the shepherd girl."
 			},
 			# 27
 			{
-				"type": "villager_b",
-				"text": "Stop this madness at once and I will let it go."
+				"type": "you",
+				"text": "This woman is no thief. You are the one who is mistaken."
 			},
 			# 28
 			{
-				"type": "narration",
-				"text": "The first villager seems to have more to say — but cornered by both of you and the second villager's menacing gaze, she has no choice but to back down."
+				"type": "villager_a",
+				"text": "What do you think you're doing?!"
 			},
 			# 29
-			{ "type": "peace_effect", "delta": 4, "town_id": "town_01", "go_to": 33 },
-
-			# --- PROBE branch (30-31) ---
+			{
+				"type": "villager_b",
+				"text": "Well. It seems the truth is finally coming to light. Stop this madness and I will let it go."
+			},
 			# 30
 			{
 				"type": "narration",
-				"text": "You ask a few careful questions, trying to understand the full picture. Both villagers talk over each other — you can't make much sense of it. You'll need more context before you can do anything useful here."
+				"text": "The first villager seems to have more to say, but cornered by the two of you and the shepherd girl's cold stare, he has little choice but to back down."
 			},
 			# 31
-			{ "type": "peace_effect", "delta": 0, "town_id": "town_01", "go_to": 33 },
+			{ "type": "peace_effect", "delta": 4, "town_id": "town_01", "go_to": 40 },
 
-			# --- LEAVE branch (32) ---
+			# --- INVESTIGATE (32-37) ---
 			# 32
 			{
 				"type": "narration",
-				"text": "You walk past. Behind you, you hear the sound of something hitting the ground. You don't look back."
+				"text": "You raise both hands and step between them."
 			},
-
-			# --- CLOSE (33) ---
 			# 33
+			{
+				"type": "you",
+				"text": "I will look into this. Give me time to find out what actually happened to that sheep."
+			},
+			# 34
+			{
+				"type": "villager_a",
+				"text": "...Fine. But be quick about it. I want what is mine."
+			},
+			# 35
+			{
+				"type": "villager_b",
+				"text": "Fine. But if i find out you're working with him, I will remember your face."
+			},
+			# 36
+			{
+				"type": "narration",
+				"text": "They separate, still glaring at each other across the road. Somewhere between a barn and a gate, a sheep vanished. You intend to find out where."
+			},
+			# 37
+			{ "type": "quest_trigger", "quest_id": "missing_sheep", "go_to": 40 },
+
+			# --- LEAVE (38-39) ---
+			# 38
+			{
+				"type": "narration",
+				"text": "You walk past. Behind you, you hear the argument flare up again. You don't look back."
+			},
+			# 39
+			{ "type": "peace_effect", "delta": -2, "town_id": "town_01", "go_to": 40 },
+
+			# --- CLOSE (40) ---
+			# 40
 			{ "type": "close" }
 		]
 	}
