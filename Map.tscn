@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://c7pgrux81y2lm"]
+
+[ext_resource type="PackedScene" path="res://Layer_1_0.tscn" id="0_id"]
+[ext_resource type="PackedScene" path="res://floor_1.tscn" id="1_id"]
+
+[node name="map" type="Node2D"]
+position = Vector2(-1.0000007, -24)
+scale = Vector2(1.7, 1.7)
+
+[node name="floor_1" parent="." instance=ExtResource("1_id")]
+
+[node name="Layer_1_0" parent="." instance=ExtResource("0_id")]
+collision_enabled = true

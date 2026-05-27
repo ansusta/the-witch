@@ -1,8 +1,10 @@
 extends Area2D
+
 @export var event_id: String = "town01_entrance_fight"
 @export var villager_a: CharacterBody2D = null
 @export var villager_b: CharacterBody2D = null
 @export var onlookers: Array[CharacterBody2D] = []
+
 var _triggered: bool = false
 
 func _ready() -> void:
@@ -13,7 +15,8 @@ func _on_body_entered(body: Node) -> void:
 		return
 	_triggered = true
 	await _setup_scene()
-	EventManager.play_event(Town01Events.entrance_fight())
+	await EventManager.play_event(Town01Events.entrance_fight())
+	_cleanup_scene()
 
 func _setup_scene() -> void:
 	var meeting_point = (villager_a.global_position + villager_b.global_position) / 2.0
@@ -33,7 +36,7 @@ func _setup_scene() -> void:
 	await villager_a.walk_finished
 	await villager_b.walk_finished
 
-	# Start both emotes at the same time
+	# Start both fight emotes at the same time
 	if villager_a:
 		villager_a.play_emote_loop("fight")
 	if villager_b:
@@ -41,3 +44,17 @@ func _setup_scene() -> void:
 
 	# Let them fight for a moment before dialogue starts
 	await get_tree().create_timer(1.5).timeout
+
+func _cleanup_scene() -> void:
+	# Stop fight animations
+	if villager_a:
+		villager_a.stop_emote()
+		villager_a.unfreeze()
+	if villager_b:
+		villager_b.stop_emote()
+		villager_b.unfreeze()
+
+	# Unfreeze all onlookers
+	for npc in onlookers:
+		if npc:
+			npc.unfreeze()

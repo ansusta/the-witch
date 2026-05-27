@@ -57,10 +57,11 @@ func _ready() -> void:
 	_toast.modulate.a = 0.0
 	add_child(_toast)
 
-func play_event(event: Dictionary) -> void:
+func play_event(event: Dictionary) -> Signal:
 	_current_event = event
 	_current_step = 0
 	_process_step()
+	return event_finished
 
 func _process_step() -> void:
 	if _current_step >= _current_event.steps.size():

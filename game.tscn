@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://duui16fo8e6f4"]
+[gd_scene load_steps=9 format=3 uid="uid://duui16fo8e6f4"]
 
 [ext_resource type="PackedScene" uid="uid://pgunxw332rmb" path="res://npc.tscn" id="1_80nbo"]
+[ext_resource type="PackedScene" uid="uid://c7pgrux81y2lm" path="res://Map.tscn" id="1_j5wjh"]
 [ext_resource type="PackedScene" uid="uid://52sdjw7gphs5" path="res://character_body_2d.tscn" id="2_e2o6t"]
 [ext_resource type="PackedScene" uid="uid://c1g02u5nbblpy" path="res://fairy.tscn" id="3_feb5d"]
 [ext_resource type="PackedScene" uid="uid://cky3oee38sds3" path="res://area_2d.tscn" id="4_fc0e3"]
@@ -10,19 +11,21 @@
 
 [node name="game" type="Node2D"]
 
+[node name="map" parent="." instance=ExtResource("1_j5wjh")]
+
 [node name="npc" parent="." instance=ExtResource("1_80nbo")]
 position = Vector2(83, 232)
 npc_name = "isabella"
 
 [node name="Area2D" parent="." node_paths=PackedStringArray("villager_a", "villager_b", "onlookers") instance=ExtResource("4_fc0e3")]
-position = Vector2(440, 274)
+position = Vector2(11, -16)
 collision_mask = 3
 villager_a = NodePath("../npc2")
 villager_b = NodePath("../npc3")
 onlookers = [NodePath("../npc4"), NodePath("../npc"), NodePath("../npc5")]
 
 [node name="npc2" parent="." instance=ExtResource("3_feb5d")]
-position = Vector2(237, 168)
+position = Vector2(242, 228)
 
 [node name="npc3" parent="." instance=ExtResource("5_7jktm")]
 position = Vector2(553, 175)
@@ -31,7 +34,7 @@ position = Vector2(553, 175)
 position = Vector2(679, 281)
 
 [node name="npc5" parent="." instance=ExtResource("7_eow3j")]
-position = Vector2(374, 95)
+position = Vector2(311, 91)
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("2_e2o6t")]
-position = Vector2(753, 461)
+position = Vector2(525, 328)

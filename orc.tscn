@@ -184,7 +184,8 @@ radius = 53.009434
 script = ExtResource("1_jleae")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(1.921875, 1.8437498)
+position = Vector2(-5.2500024, 0)
+scale = Vector2(1.7578124, 1.8437498)
 sprite_frames = SubResource("SpriteFrames_faxwa")
 animation = &"idle_down"
 
