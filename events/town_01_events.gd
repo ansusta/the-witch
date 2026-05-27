@@ -19,8 +19,6 @@ static func entrance_fight() -> Dictionary:
 					{ "label": "Leave them alone", "go_to": 38 }
 				]
 			},
-
-			# --- APPROACH ---
 			# 2
 			{
 				"type": "narration",
@@ -88,7 +86,7 @@ static func entrance_fight() -> Dictionary:
 				]
 			},
 
-			# --- MEDIATE (14-19) ---
+			
 			# 14
 			{
 				"type": "you",
@@ -117,7 +115,7 @@ static func entrance_fight() -> Dictionary:
 			# 19
 			{ "type": "peace_effect", "delta": -8, "town_id": "town_01", "go_to": 40 },
 
-			# --- SIDE A (20-25) ---
+			
 			# 20
 			{
 				"type": "narration",
@@ -126,7 +124,7 @@ static func entrance_fight() -> Dictionary:
 			# 21
 			{
 				"type": "you",
-				"text": "The deception this woman is playing is quite clear. I will not stand by and watch it."
+				"text": "The ploy this woman is playing is quite clear. I will not stand by and watch it."
 			},
 			# 22
 			{
@@ -146,7 +144,7 @@ static func entrance_fight() -> Dictionary:
 			# 25
 			{ "type": "peace_effect", "delta": 4, "town_id": "town_01", "go_to": 40 },
 
-			# --- SIDE B (26-31) ---
+			
 			# 26
 			{
 				"type": "narration",
@@ -175,7 +173,7 @@ static func entrance_fight() -> Dictionary:
 			# 31
 			{ "type": "peace_effect", "delta": 4, "town_id": "town_01", "go_to": 40 },
 
-			# --- INVESTIGATE (32-37) ---
+			
 			# 32
 			{
 				"type": "narration",
@@ -204,16 +202,16 @@ static func entrance_fight() -> Dictionary:
 			# 37
 			{ "type": "quest_trigger", "quest_id": "missing_sheep", "go_to": 40 },
 
-			# --- LEAVE (38-39) ---
+			
 			# 38
 			{
 				"type": "narration",
 				"text": "You walk past. Behind you, you hear the argument flare up again. You don't look back."
 			},
 			# 39
-			{ "type": "peace_effect", "delta": -2, "town_id": "town_01", "go_to": 40 },
+			{ "type": "peace_effect", "delta": -4, "town_id": "town_01", "go_to": 40 },
 
-			# --- CLOSE (40) ---
+			
 			# 40
 			{ "type": "close" }
 		]

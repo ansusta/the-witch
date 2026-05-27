@@ -21,6 +21,7 @@ DialogueManager="*res://DialogueManager.gd"
 PeaceManager="*res://PeaceManager.gd"
 EventManager="*res://event_manager.gd"
 NetworkManager="*res://NetworkManager.gd"
+HUD="*res://hud.gd"
 
 [input]
 

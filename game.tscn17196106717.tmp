@@ -45,7 +45,7 @@ dialogue_neutral = Array[String](["welcome to cirranehope"])
 dialogue_hostile = Array[String](["please leave..."])
 
 [node name="npc5" parent="." instance=ExtResource("7_eow3j")]
-position = Vector2(797, 91)
+position = Vector2(311, 91)
 npc_name = "jackob"
 dialogue_high = Array[String](["look who decided to bless us with their presence! today is gona be such a lucky day"])
 dialogue_neutral = Array[String](["make yourelf at home"])

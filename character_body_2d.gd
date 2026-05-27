@@ -7,14 +7,14 @@ func _ready() -> void:
 	add_to_group("player")
 
 func _physics_process(_delta: float) -> void:
-	# Block movement while dialogue is open
-	if DialogueManager.is_open():
+	# Block movement while any UI is open
+	if DialogueManager.is_open() or EventManager.is_open() or HUD.is_map_open():
 		velocity = Vector2.ZERO
 		sprite.play("idle")
 		move_and_slide()
 		return
 
-	var direction = Input.get_vector("move_left", "move_right", "move_top", "move_bottom")
+	var direction := Input.get_vector("move_left", "move_right", "move_top", "move_bottom")
 
 	if direction != Vector2.ZERO:
 		velocity = direction * speed
@@ -27,11 +27,13 @@ func _physics_process(_delta: float) -> void:
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("interact"):
-		# Find closest NPC in range
 		for npc in get_tree().get_nodes_in_group("npcs"):
 			if npc.player_nearby:
 				npc.start_dialogue()
 				break
+
+	if event.is_action_pressed("open_map"):
+		HUD.toggle_map()
 
 func play_animation(dir: Vector2) -> void:
 	if abs(dir.x) > abs(dir.y):
